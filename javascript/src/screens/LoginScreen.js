@@ -4,55 +4,65 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import {
-  Platform,
   StyleSheet,
   Text,
+  TextInput,
+  TouchableHighlight,
   View,
 } from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: 'rgba(50, 50, 120, 0.8)',
   },
-  welcome: {
+  uperSection: {
+    flex: 2,
+  },
+  lowerSection: {
+    flex: 1,
+    justifyContent: 'space-around',
+    paddingHorizontal: 5,
+  },
+  input: {
+    fontSize: 22,
+    color: 'white',
+    borderBottomWidth: 1,
+    borderBottomColor: 'white',
+  },
+  buttonText: {
     fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+    color: 'white',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  button: {
+    backgroundColor: 'rgba(50, 50, 120, 0.8)',
+    padding: 10,
+    alignSelf: 'center',
   },
 });
 
 export const loginScreenKey = 'login_screen';
 
-export default class LoginScreen extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
-    );
-  }
-}
+const LoginScreen = () => (
+  <View style={styles.container}>
+    <View style={styles.uperSection} />
+    <View style={styles.lowerSection}>
+      <TextInput
+        style={styles.input}
+        placeholder="Enter a username"
+        placeholderTextColor="rgb(150, 150, 150)"
+      />
+      <TouchableHighlight
+        activeOpacity={0.8}
+        style={styles.button}
+        onPress={() => alert('Lets get started')}
+      >
+        <Text style={styles.buttonText}> Get Started </Text>
+      </TouchableHighlight>
+    </View>
+  </View>
+);
+
+export default LoginScreen;
